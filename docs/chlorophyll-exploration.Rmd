@@ -1,0 +1,47 @@
+---
+title: "Toolik Chlorophyll Concentrations"
+author: "Wylie Hampson"
+date: "8/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(skimr)
+```
+
+## Read in toolik_chlorophyll.csv as a data frame stored as `toolik_chlorophyll`
+
+```{r}
+toolik_chlorophyll <- read_csv(here::here("data", "data-raw", "toolik_chlorophyll.csv"), 
+                               na = ".")
+```
+
+
+Explore the imported data with `skimr::skim()`, `names()`, `dim()`, `summary()`
+
+```{r}
+skim(toolik_chlorophyll)
+
+names(toolik_chlorophyll)
+
+dim(toolik_chlorophyll)
+
+summary(toolik_chlorophyll)
+```
+
+Create a new version with newer cleaned up names
+
+```{r}
+toolik_chlorophyll <- toolik_chlorophyll %>% clean_names()
+
+names(toolik_chlorophyll)
+```
+
+Make a plot of depth vs. active chlorophyll
+
+
+

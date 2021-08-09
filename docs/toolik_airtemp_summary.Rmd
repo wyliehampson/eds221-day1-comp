@@ -18,7 +18,8 @@ library(skimr)
 The data are stored in the `data-raw` subfolder. We'll use `here::here()` to point to it, and read it in using the `readr::read_csv()` function from the `readr` package (part of the `tidyverse`). 
 
 ```{r}
-toolik_weather <- read_csv(here::here("data", "data-raw", "toolik_weather.csv"))
+toolik_weather <- read_csv(here::here("data", "data-raw", "toolik_weather.csv"),
+                           na = "#N/A") # data.table::fread() for larger datasets
 ```
 
 
