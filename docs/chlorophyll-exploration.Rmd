@@ -41,7 +41,28 @@ toolik_chlorophyll <- toolik_chlorophyll %>% clean_names()
 names(toolik_chlorophyll)
 ```
 
-Make a plot of depth vs. active chlorophyll
+## Make a scatter plot of depth vs. chlorophyll A concentration
+
+- Make point size `size` change based on the concentration
+- Make all point "cyan4"
+- Update the theme to `theme_dark()"
+
+
+```{r}
+toolik_chlorophyll_plot <- ggplot(data = toolik_chlorophyll,
+                                  aes(x = active_chl_a_ug_l, y = depth)) + 
+  geom_point(aes(size = active_chl_a_ug_l),
+             alpha = 0.5,
+             color = "cyan") +
+  theme_dark() + 
+  scale_y_reverse()
+
+toolik_chlorophyll_plot
+```
+
+```{r}
+ggsave(here::here("figs", "toolik_chlorophyll_plot.jpg"), plot = toolik_chlorophyll_plot)
+```
 
 
 
